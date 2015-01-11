@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         byhh for XiaoMi Router
 // @namespace    http://www.ibeyond.net
-// @version      0.1
+// @version      0.2
 // @description  enter something useful
 // @author       iBeyond
 // @match        http://www.byhh.org/*
@@ -18,4 +18,8 @@ $('a.ed2kDown').each(function(){
     var title = $($(this).parent().parent().get(0)).children('.magTitle').children('a:first').text();
     var url = 'https://d.miwifi.com/d2r/?url='+Base64.encodeURI($(this).attr('ed2k'))+'&src=ibeyond&name='+encodeURIComponent(title);
     $(this).attr({'href':url,'target':'_blank'});
+});
+$('[href^=\'ed2k://\']').each(function(){
+    var url = 'https://d.miwifi.com/d2r/?url='+ Base64.encodeURI($(this).attr('href')) + '&src=ibeyond&name='+encodeURIComponent($(this).text());                                                                                                                           
+    $('<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\''+ url + '\' target=\'_blank\'>[XiaoMi]</a></span>').appendTo($(this).parent());
 });
