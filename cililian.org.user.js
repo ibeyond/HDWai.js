@@ -11,5 +11,5 @@
 // ==/UserScript==
 
 $("[href^='magnet:']").each(function(){
-    $(this).attr({'href':'https://d.miwifi.com/d2r/?url='+Base64.encodeURI($(this).attr('href'))+'&src=qvocd&name='+encodeURIComponent($('.T1').text()),'target':'_blank'});
+    $(this).attr({'href':'https://d.miwifi.com/d2r/?url='+Base64.encodeURI($.trim($(this).attr('href')))+'&src=qvocd&name='+encodeURIComponent($('.T1').text()),'target':'_blank'});
 });
